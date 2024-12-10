@@ -11,4 +11,6 @@ urlpatterns = [
 #######################user##################
     path('register/',views.Register),
     path('user_home',views.user_home),
+    path('women_frames',views.women_frames),
+    path('about',views.about),
 ]

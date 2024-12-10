@@ -49,7 +49,7 @@ def add_product(req):
             price=req.POST['price']
             o_price=req.POST['offer_price']
             file=req.FILES['img']
-            data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price,stock=stock,img=file)
+            data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price,img=file)
 
             data.save()
             return redirect(shop_home)
@@ -86,4 +86,36 @@ def user_home(req):
         return render(req,'user/home.html',{'products':data})
     else:
         return redirect(e_shop_login)
-    
+
+def women_frames(req):
+    if 'user' in req.session:
+        if req.method == 'POST':
+            pid = req.POST['pid']
+            name = req.POST['name']
+            dis = req.POST['dis']
+            price = req.POST['price']
+            o_price = req.POST['offer_price']
+            file = req.FILES['img']
+
+            product.objects.create(
+                pid=pid,
+                name=name,
+                dis=dis,
+                price=price,
+                offer_price=o_price,
+                img=file
+            )
+
+            
+            return redirect('women_frames')
+        else:
+         
+            products = product.objects.all()
+            return render(req, 'user/womenframes.html', {'products': products})
+    else:
+        return redirect('e_shop_login')
+
+
+def about(request):
+    return render(request,'user/about.html')
+
