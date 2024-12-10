@@ -8,3 +8,11 @@ class product(models.Model):
     price=models.IntegerField()
     offer_price=models.IntegerField()
     img=models.FileField()
+
+class womenframes(models.Model):
+    pid=models.TextField()
+    name=models.TextField()
+    dis=models.TextField()
+    price=models.IntegerField()
+    offer_price=models.IntegerField()
+    img=models.FileField()
