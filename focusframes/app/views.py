@@ -97,15 +97,10 @@ def women_frames(req):
             o_price = req.POST['offer_price']
             file = req.FILES['img']
 
-            product.objects.create(
-                pid=pid,
-                name=name,
-                dis=dis,
-                price=price,
-                offer_price=o_price,
-                img=file
-            )
-
+            data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price)
+            data=product.objects.get(pk=pid)
+            data.img=file
+            data.save()
             
             return redirect('women_frames')
         else:
@@ -114,6 +109,34 @@ def women_frames(req):
             return render(req, 'user/womenframes.html', {'products': products})
     else:
         return redirect('e_shop_login')
+
+def edit_product(req,pid):
+    if req.method=='POST':
+        pid=req.POST['pid']
+        name=req.POST['name']
+        dis=req.POST['dis']
+        price=req.POST['price']
+        o_price=req.POST['off_price']
+        file=req.FILES.get('img')
+        if file:
+            product.objects.filter(pk=pid).update(pid=pid,name=name,dis=dis,price=price,offer_price=o_price)
+            data=product.objects.get(pk=pid)
+            data.img=file
+            data.save()
+        else:
+            product.objects.filter(pk=pid).update(pid=pid,name=name,dis=dis,price=price,offer_price=o_price)
+        return redirect(shop_home)
+    else:
+        data=product.objects.get(pk=pid)
+        return render(req,'shop/edit.html',{'data':data})
+
+def delete_product(req,pid):
+    data=product.objects.get(pk=pid)
+    file=data.img.url
+    file=file.split('/')[-1]
+    os.remove('media/'+file)
+    data.delete()
+    return redirect(shop_home)
 
 
 def about(request):
