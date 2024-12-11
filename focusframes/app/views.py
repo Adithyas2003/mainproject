@@ -142,3 +142,8 @@ def delete_product(req,pid):
 def about(request):
     return render(request,'user/about.html')
 
+
+def contact(request):
+    return render(request,'user/contact.html')
+
+
