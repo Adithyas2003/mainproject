@@ -8,14 +8,22 @@ urlpatterns = [
     path('add_product',views.add_product),
    path('edit_product/<pid>',views.edit_product),
     path('delete_product/<pid>',views.delete_product),
+    path('category/<int:category_id>/', views.category_view),
+ 
+    # Other URLs...
+
+
 
 
 
 #######################user##################
     path('register/',views.Register),
     path('user_home',views.user_home),
-    path('women_frames',views.women_frames),
     path('about/',views.about),
     path('contact/',views.contact),
+    path('women_frames/', views.women_frames),
+    path('men_frames/', views.men_frames),
+    path('kids_frames/', views.kids_frames),
+
 
 ]
