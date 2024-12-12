@@ -39,24 +39,22 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" style="max-width: 1200px;">
         <div class="row">
-          {% for pro in product %}
-          <div class="col-lg-4">
-            <div class="card" style="width:400px"  >
-              <img class="card-img-top" src="{{pro.img.url}}" alt="Card image" style="width:100%;height: 400px;">
+          {% for pro in womenframes %}
+          <div class="col-lg-4 mb-4">
+            <div class="card" style="width: 100%;">
+              <img class="card-img-top" src="{{ pro.img.url }}" alt="Card image" style="width: 100%; height: auto; object-fit: cover;">
               <div class="card-body">
-                <h4 class="card-title">{{pro.name}}</h4>
-                <p class="card-text">{{pro.dis}}</p>
-                <h3 class=""></h3>
-                <a href="edit_product/{{pro.pk}}" class="btn btn-primary">Edit</a>
-                <a href="delete_product/{{pro.pk}}" class="btn btn-primary">Delete</a>
-                </div>
+                <h4 class="card-title">{{ pro.name }}</h4>
+                <p class="card-text">{{ pro.dis }}</p>
+                <p class="card-text text-muted" style="text-decoration: line-through;">Price: ${{ pro.price }}</p>
+                <p class="card-text text-danger">Offer Price: ${{ pro.offer_price }}</p>
               </div>
             </div>
-        
+          </div>
           {% endfor %}
         </div>
-      </div> 
+      </div>
 </body>
 </html>

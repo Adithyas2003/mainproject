@@ -102,13 +102,13 @@ def women_frames(req):
             data.img=file
             data.save()
             
-            return redirect('women_frames')
+            return redirect('user/women_frames')
         else:
          
             products = product.objects.all()
             return render(req, 'user/womenframes.html', {'products': products})
     else:
-        return redirect('e_shop_login')
+        return redirect('login')
 
 def edit_product(req,pid):
     if req.method=='POST':
