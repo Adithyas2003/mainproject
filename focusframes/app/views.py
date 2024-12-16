@@ -38,65 +38,48 @@ def shop_home(req):
         return render(req,'shop/home.html',{'products':data})
     else:
         return redirect(e_shop_login)
-    
-
-def add_product(req):
+def add_product(req) :
     if 'shop' in req.session:
-        if req.method == 'POST':
-            pid = req.POST['pid']
-            name = req.POST['name']
-            dis = req.POST['dis']
-            price = req.POST['price']
-            o_price = req.POST['offer_price']
-            file = req.FILES['img']
-            category_id = req.POST['category']  
-
-         
-            category = Category.objects.filter(id=category_id).first()
-
-            if not category:
-              
-                return render(req, 'shop/addproduct.html', {'error': 'Category does not exist'})
-
+        if req.method=='POST':
+            pid=req.POST['pid']
+            name=req.POST['name']
+            dis=req.POST['dis']
+            price=req.POST['price']
+            o_price=req.POST['offer_price']
+            category=req.POST['category']
            
-            data = product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price,img=file,category=category)
+            file=req.FILES['img']
+            category=Category.objects.get(pk=category)
+            data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price,category=category,img=file)
             data.save()
-            return redirect('shop_home') 
+            return redirect(shop_home)
         else:
-            categories = Category.objects.all()  
-            return render(req, 'shop/addproduct.html', {'categories': categories})
+            category=Category.objects.all()
+            return render(req,'shop/addproduct.html',{'category':category})
     else:
-        return redirect('e_shop_login')
-    
+        return redirect(e_shop_login) 
+
 def category_view(req, category_id):
     try:
         category = Category.objects.get(id=category_id)
     except Category.DoesNotExist:
         return render(req, 'shop/category_view.html', {'error': 'Category does not exist'})
     
-    products = product.objects.filter(category=category)
+    products = product.objects.filter(category=category)  
     return render(req, 'shop/category_view.html', {'category': category, 'products': products})
 
 
-
-def women_frames(request):
+def women_frames(req):
     women_frames = product.objects.filter(category__name='Women')  
-    return render(request, 'shop/women_frames.html', {'women_frames': women_frames})
+    return render(req, 'shop/women_frames.html', {'women_frames': women_frames})
 
-def men_frames(request):
+def men_frames(req):
     men_frames = product.objects.filter(category__name='Men') 
-    return render(request, 'shop/men_frames.html', {'menframes': men_frames})
+    return render(req, 'shop/men_frames.html', {'menframes': men_frames})
 
-def kids_frames(request):
-    kids_frames = product.objects.filter(category__name='Kids')  
-    return render(request, 'shop/kids_frames.html', {'kidsframes': kids_frames})
-
-
-
-
-
-
-
+def kids_frames(req):
+    kids_frames = product.objects.filter(category__name='Kids') 
+    return render(req, 'shop/kids_frames.html', {'kidsframes': kids_frames})
 
 
 	
@@ -128,28 +111,28 @@ def user_home(req):
     else:
         return redirect(e_shop_login)
 
-def women_frames(req):
-    if 'user' in req.session:
-        if req.method == 'POST':
-            pid = req.POST['pid']
-            name = req.POST['name']
-            dis = req.POST['dis']
-            price = req.POST['price']
-            o_price = req.POST['offer_price']
-            file = req.FILES['img']
+# def women_frames(req):
+#     if 'user' in req.session:
+#         if req.method == 'POST':
+#             pid = req.POST['pid']
+#             name = req.POST['name']
+#             dis = req.POST['dis']
+#             price = req.POST['price']
+#             o_price = req.POST['offer_price']
+#             file = req.FILES['img']
 
-            data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price)
-            data=product.objects.get(pk=pid)
-            data.img=file
-            data.save()
+#             data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price)
+#             data=product.objects.get(pk=pid)
+#             data.img=file
+#             data.save()
             
-            return redirect('user/women_frames')
-        else:
+#             return redirect('user/women_frames')
+#         else:
          
-            products = product.objects.all()
-            return render(req, 'user/womenframes.html', {'products': products})
-    else:
-        return redirect('login')
+#             products = product.objects.all()
+#             return render(req, 'user/womenframes.html', {'products': products})
+#     else:
+#         return redirect('e_shop_login')
 
 def edit_product(req,pid):
     if req.method=='POST':
@@ -178,6 +161,7 @@ def delete_product(req,pid):
     os.remove('media/'+file)
     data.delete()
     return redirect(shop_home)
+
 
 
 def about(request):

@@ -1,76 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Products Page</title>
-    
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Add New Product</h2>
-
-        <!-- Category Buttons -->
-        <div class="mb-4">
-            <!-- Hardcoding the URL paths -->
-            <a href="/category/1/" class="btn btn-info btn-lg">Women Frames</a>
-            <a href="/category/2/" class="btn btn-info btn-lg">Men Frames</a>
-            <a href="/category/3/" class="btn btn-info btn-lg">Kids Frames</a>
-        </div>
-
-        <!-- Add Product Form -->
-        <form action="" method="post" enctype="multipart/form-data" class="p-4 shadow-sm bg-white rounded">
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Add Products Page</title>
+     
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+ </head>
+ 
+ <body>
+     <div class="container mt-5">
+         <h2 class="text-center mb-4">Add New Product</h2>
+         <form action="" method="post"  enctype="multipart/form-data" p-4 shadow-sm bg-white rounded">
             {% csrf_token %}
              
-            <div class="form-group">
-                <label for="pid"><b>Product ID</b></label>
-                <input type="text" class="form-control" name="pid" id="pid" placeholder="Enter product ID">
-            </div>
-
-            <div class="form-group">
-                <label for="name"><b>Product Name</b></label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Enter product name">
-            </div>
-
-            <div class="form-group">
-                <label for="dis"><b>Description</b></label>
-                <textarea class="form-control" name="dis" id="dis" rows="3" placeholder="Enter product description"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="price"><b>Price</b></label>
-                <input type="number" class="form-control" name="price" id="price" placeholder="Enter price">
-            </div>
-
-            <div class="form-group">
-                <label for="offer_price"><b>Offer Price</b></label>
-                <input type="number" class="form-control" name="offer_price" id="o_price" placeholder="Enter offer price">
-            </div>
-
-            <!-- Image Upload -->
-            <div class="form-group">
-                <label for="image"><b>Image</b></label>
-                <input type="file" class="form-control-file" name="img" id="img">
-            </div>
-
-            <!-- Category Selection -->
-            <div class="form-group">
-                <label for="category"><b>Select Category</b></label>
-                <select class="form-control" name="category" id="category" required>
-                    <option value="1">Women Frames</option>
-                    <option value="2">Men Frames</option>
-                    <option value="3">Kids Frames</option>
+             <div class="form-group">
+                 <label for="pid"><b>Product ID</b></label>
+                 <input type="text" class="form-control" name="pid" id="pid" placeholder="Enter product ID">
+             </div>
+ 
+             <div class="form-group">
+                 <label for="name"><b>Product Name</b></label>
+                 <input type="text" class="form-control" name="name" id="name" placeholder="Enter product name">
+             </div>
+ 
+             <div class="form-group">
+                 <label for="dis"><b>Description</b></label>
+                 <textarea class="form-control" name="dis" id="dis" rows="3" placeholder="Enter product description"></textarea>
+             </div>
+ 
+             <div class="form-group">
+                 <label for="price"><b>Price</b></label>
+                 <input type="number" class="form-control" name="price" id="price" placeholder="Enter price">
+             </div>
+ 
+             <div class="form-group">
+                 <label for="offer_price"><b>Offer Price</b></label>
+                 <input type="number" class="form-control" name="offer_price" id="o_price" placeholder="Enter offer price">
+             </div>
+ 
+            
+ 
+             <div class="form-group">
+                 <label for="image"><b>Image</b></label>
+                 <input type="file" class="form-control-file" name="img" id="image">
+             </div>
+             <div class="form-group">
+                <label for="category"><b>Category</b></label>
+                <select class="form-control" name="category" id="category">
+                    <option value="">select</option>
+                    <!-- <option value="">men</option>
+                    <option value="">kids</option> -->
+                    {% for category in categories %}
+                        <option value="{{ category.pk }}">{{ category.name }}</option>
+                    {% endfor %}
                 </select>
             </div>
-
-            <button type="submit" class="btn btn-primary btn-block">Add Product</button>
-        </form>
-    </div>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+ 
+             <button type="submit" class="btn btn-primary btn-block">Add Product</button>
+         </form>
+     </div>
+ 
+     
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ </body>
+ 
+ </html>
+ 
