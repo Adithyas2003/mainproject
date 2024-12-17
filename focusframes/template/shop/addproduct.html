@@ -52,8 +52,8 @@
                     <option value="">select</option>
                     <!-- <option value="">men</option>
                     <option value="">kids</option> -->
-                    {% for category in categories %}
-                        <option value="{{ category.pk }}">{{ category.name }}</option>
+                    {% for c in category %}
+                        <option value="{{ category.pk }}">{{c.Category_name }}</option>
                     {% endfor %}
                 </select>
             </div>

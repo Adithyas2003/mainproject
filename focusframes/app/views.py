@@ -61,7 +61,7 @@ def add_product(req) :
 
 def category_view(req, category_id):
     try:
-        category = Category.objects.get(id=category_id)
+        category = Category.objects.get(pid=category_id)
     except Category.DoesNotExist:
         return render(req, 'shop/category_view.html', {'error': 'Category does not exist'})
     
@@ -80,6 +80,24 @@ def men_frames(req):
 def kids_frames(req):
     kids_frames = product.objects.filter(category__name='Kids') 
     return render(req, 'shop/kids_frames.html', {'kidsframes': kids_frames})
+
+
+
+def add_category(req):
+    if 'shop' in req.session:
+        if req.method=='POST':
+            c_name=req.POST['cate_name']
+            c_name=c_name.lower()
+            try:
+                cate=Category.objects.get(Category_name=c_name)
+            except:
+                data=Category.objects.create(Category_name=c_name)
+                data.save()
+            return redirect(add_category)
+        categories=Category.objects.all()
+        return render(req,'shop/cate.html' ,{'cate':categories})
+    else:
+        return render(req,'shop/cate.html')
 
 
 	
