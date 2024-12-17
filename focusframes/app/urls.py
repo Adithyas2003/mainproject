@@ -6,10 +6,10 @@ urlpatterns = [
     path('shop_home',views.shop_home),
     path('logout',views.e_shop_logout),
     path('add_product/',views.add_product),
-   path('edit_product/<pid>',views.edit_product),
+    path('edit_product/<pid>',views.edit_product),
     path('delete_product/<pid>',views.delete_product),
-    path('category/<int:category_id>/', views.category_view),
-     path('add_cate',views.add_category),
+    # path('category/<int:category_id>/', views.category_view),
+    path('add_cate',views.add_category),
  
     # Other URLs...
 

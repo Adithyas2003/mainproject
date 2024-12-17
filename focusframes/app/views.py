@@ -33,11 +33,11 @@ def e_shop_login(req):
 	
 
 def shop_home(req):
-    data=product.objects.all()
-    if 'shop' in req.session:
-        return render(req,'shop/home.html',{'products':data})
-    else:
-        return redirect(e_shop_login)
+    # data=product.objects.all()
+    # if 'shop' in req.session:
+        return render(req,'shop/home.html')
+    # else:
+    #     return redirect(e_shop_login)
 def add_product(req) :
     if 'shop' in req.session:
         if req.method=='POST':
@@ -46,40 +46,39 @@ def add_product(req) :
             dis=req.POST['dis']
             price=req.POST['price']
             o_price=req.POST['offer_price']
-            category=req.POST['category']
-           
+            cate=req.POST['category']
             file=req.FILES['img']
-            category=Category.objects.get(pk=category)
-            data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price,category=category,img=file)
+            cat=Category.objects.get(pk=cate)
+            data=product.objects.create(pid=pid,name=name,dis=dis,price=price,offer_price=o_price,category=cat,img=file)
             data.save()
             return redirect(shop_home)
         else:
-            category=Category.objects.all()
-            return render(req,'shop/addproduct.html',{'category':category})
+            cate=Category.objects.all()
+            return render(req,'shop/addproduct.html',{'cate':cate})
     else:
         return redirect(e_shop_login) 
 
-def category_view(req, category_id):
-    try:
-        category = Category.objects.get(pid=category_id)
-    except Category.DoesNotExist:
-        return render(req, 'shop/category_view.html', {'error': 'Category does not exist'})
+# def category_view(req, category_id):
+#     try:
+#         category = Category.objects.get(pid=category_id)
+#     except Category.DoesNotExist:
+#         return render(req, 'shop/category_view.html', {'error': 'Category does not exist'})
     
-    products = product.objects.filter(category=category)  
-    return render(req, 'shop/category_view.html', {'category': category, 'products': products})
+#     products = product.objects.filter(category=category)  
+#     return render(req, 'shop/category_view.html', {'category': category, 'products': products})
 
 
-def women_frames(req):
-    women_frames = product.objects.filter(category__name='Women')  
-    return render(req, 'shop/women_frames.html', {'women_frames': women_frames})
+# def women_frames(req):
+#     women_frames = product.objects.filter(category__name='Women')  
+#     return render(req, 'shop/women_frames.html', {'women_frames': women_frames})
 
-def men_frames(req):
-    men_frames = product.objects.filter(category__name='Men') 
-    return render(req, 'shop/men_frames.html', {'menframes': men_frames})
+# def men_frames(req):
+#     men_frames = product.objects.filter(category__name='Men') 
+#     return render(req, 'shop/men_frames.html', {'menframes': men_frames})
 
-def kids_frames(req):
-    kids_frames = product.objects.filter(category__name='Kids') 
-    return render(req, 'shop/kids_frames.html', {'kidsframes': kids_frames})
+# def kids_frames(req):
+#     kids_frames = product.objects.filter(category__name='Kids') 
+#     return render(req, 'shop/kids_frames.html', {'kidsframes': kids_frames})
 
 
 

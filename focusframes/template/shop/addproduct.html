@@ -17,7 +17,7 @@
              
              <div class="form-group">
                  <label for="pid"><b>Product ID</b></label>
-                 <input type="text" class="form-control" name="pid" id="pid" placeholder="Enter product ID">
+                 <input type="number" class="form-control" name="pid" id="pid" placeholder="Enter product ID">
              </div>
  
              <div class="form-group">
@@ -47,15 +47,13 @@
                  <input type="file" class="form-control-file" name="img" id="image">
              </div>
              <div class="form-group">
-                <label for="category"><b>Category</b></label>
-                <select class="form-control" name="category" id="category">
-                    <option value="">select</option>
-                    <!-- <option value="">men</option>
-                    <option value="">kids</option> -->
-                    {% for c in category %}
-                        <option value="{{ category.pk }}">{{c.Category_name }}</option>
-                    {% endfor %}
-                </select>
+                <label for="category" class="form-label"><b>Category</b></label>
+                        <select class="form-control" id="category" name="category" style="border-radius: 30px; padding: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border: 1px solid #ddd;">
+                            <option value="">Select Category</option>
+                            {% for c in cate %}
+                            <option value="{{c.pk}}">{{ c.Category_name }}</option>
+                            {% endfor %}
+                        </select>
             </div>
  
              <button type="submit" class="btn btn-primary btn-block">Add Product</button>
