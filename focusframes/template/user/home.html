@@ -349,6 +349,7 @@ h5{
   <div class="row">
     {% for pro in products %}
     <div class="col-lg-4 mb-4">
+      <a href="view_pro/{{pro.pk}}">
       <div class="card" style="width: 100%;">
         <img class="card-img-top" src="{{ pro.img.url }}" alt="Card image" style="width: 100%; height: auto; object-fit: cover;">
         <div class="card-body">
@@ -358,6 +359,7 @@ h5{
           <p class="card-text text-danger">Offer Price: ${{ pro.offer_price }}</p>
         </div>
       </div>
+    </a>
     </div>
     {% endfor %}
   </div>

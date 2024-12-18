@@ -22,6 +22,7 @@ urlpatterns = [
     path('user_home',views.user_home),
     path('about/',views.about),
     path('contact/',views.contact),
+    path('view_pro/<pid>',views.view_product),
     # path('women_frames/', views.women_frames),
     # path('men_frames/', views.men_frames),
     # path('kids_frames/', views.kids_frames),

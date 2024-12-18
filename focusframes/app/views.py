@@ -32,12 +32,22 @@ def e_shop_login(req):
         return render(req,'login.html')
 	
 
+# def shop_home(req):
+#     data=product.objects.all()
+#     Categories=Category.objects.all()
+
+#     if 'shop' in req.session:
+#         return render(req,'shop/home.html',{'products':data,'category':Categories})
+#     else:
+#         return redirect(e_shop_login)
+
+
 def shop_home(req):
-    # data=product.objects.all()
-    # if 'shop' in req.session:
-        return render(req,'shop/home.html')
-    # else:
-    #     return redirect(e_shop_login)
+    products=product.objects.all()
+    Categories=Category.objects.all()
+    return render(req,'shop/home.html',{'products':products,'category':Categories})
+
+
 def add_product(req) :
     if 'shop' in req.session:
         if req.method=='POST':
@@ -169,7 +179,8 @@ def edit_product(req,pid):
         return redirect(shop_home)
     else:
         data=product.objects.get(pk=pid)
-        return render(req,'shop/edit.html',{'data':data})
+        cate=Category.objects.all()
+        return render(req,'shop/edit.html',{'data':data,'cate':cate})
 
 def delete_product(req,pid):
     data=product.objects.get(pk=pid)
@@ -189,3 +200,6 @@ def contact(request):
     return render(request,'user/contact.html')
 
 
+def view_product(req,pid):
+    data=product.objects.get(pk=pid)
+    return render(req,'user/view_pro.html',{'product':data})
