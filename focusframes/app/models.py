@@ -16,5 +16,15 @@ class product(models.Model):
     img = models.FileField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     
-   
+class Cart(models.Model):
+    Product=models.ForeignKey(product,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    qty=models.IntegerField()
+
+class Buy(models.Model):
+    Product=models.ForeignKey(product,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    qty=models.IntegerField()
+    price=models.IntegerField()
+    date=models.DateField(auto_now_add=True)
 
