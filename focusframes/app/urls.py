@@ -10,6 +10,7 @@ urlpatterns = [
     path('delete_product/<pid>',views.delete_product),
     # path('category/<int:category_id>/', views.category_view),
     path('add_cate',views.add_category),
+    path('view_bookings',views.view_bookings),
  
     # Other URLs...
 
