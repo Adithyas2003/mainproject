@@ -1,80 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <style>
+  .navbar-toggler {
+    border: none;
+  }
 
-.dropdown {
-      position: relative;
-      display: inline-block;
+  .navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Carousel image responsiveness */
+  .carousel-item img {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+  }
+
+  /* Responsive Design for Medium Screens (tablets) */
+  @media (max-width: 1024px) {
+    .carousel-item img {
+      height: 600px;
+      /* Reduce height for medium screens */
+    }
+  }
+
+  /* Responsive Design for Small Screens (mobiles) */
+  @media (max-width: 768px) {
+    .carousel-item img {
+      height: 500px;
+      /* Further reduce height for tablets */
     }
 
-    .dropbtn {
-      background-color:rgb(36, 34, 34);
-      color: white;
-      padding: 16px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
+    .navbar-nav {
+      flex-direction: column;
+      text-align: center;
     }
 
-    .dropbtn i {
-      margin-left: 8px;
+    .navbar-nav .nav-item {
+      margin: 10px 0;
+    }
+  }
+
+  /* Responsive Design for Extra Small Screens (phones) */
+  @media (max-width: 576px) {
+    .carousel-item img {
+      height: 400px;
+      /* Reduced height for mobile screens */
     }
 
-    
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
+    .navbar-nav {
+      flex-direction: column;
+      text-align: center;
     }
 
-    
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
+    .navbar-nav .nav-item {
+      margin: 5px 0;
     }
+  }
 
-    
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
 
-    
-    .dropdown-content a:hover {
-      background-color: #ddd;
-    }
-.container {
-  display: flex;
-  flex-direction: column;  
-  justify-content: center; 
-  align-items: center;     
-  text-align: center;      
-  height: 40vh;           
-  padding: 20px;           
-}
+  .dropbtn {
+    background-color: rgb(36, 34, 34);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
 
-h3, h5,p {
-  margin: 10px 0;          
-}
-h5{
-  color: red;
-}
-.container1 {
+  .dropbtn i {
+    margin-left: 8px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  /* Ensure carousel items are responsive */
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 40vh;
+    padding: 20px;
+  }
+
+  h3,
+  h5,
+  p {
+    margin: 10px 0;
+  }
+
+  h5 {
+    color: red;
+  }
+  .container1 {
   display: flex;              
   justify-content: center;    
   gap: 20px;                  
@@ -90,333 +155,498 @@ h5{
   align-items: center;       
 }
 
+
 .con1 img {
-  width: 80px;               
-  height: 80px;               
-  border-radius: 50%;        
-  object-fit: cover;         
-}
-.container2 {
-  text-align: center;
-  width: 100%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.con2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; 
-  justify-content: center; 
-}
-.container2 h1{
-  text-align: center;
-  margin: 0;
-}
-.conimg {
-  flex: 1 1 30%; 
-  max-width: 30%;
+/* Responsive design for screens smaller than 1024px (Tablets) */
+@media (max-width: 1024px) {
+  .container1 {
+    justify-content: center;
+    flex-direction: row; /* Items stay in a row */
+  }
+
+  .con1 {
+    width: 100px;
+    height: 100px;
+  }
+
+  .con1 img {
+    width: 60px;
+    height: 60px;
+  }
 }
 
-.d-block {
-  width: 100%; 
+/* Responsive design for screens smaller than 768px (Mobile Devices) */
+@media (max-width: 768px) {
+  .container1 {
+    justify-content: center;
+    flex-direction: row; /* Still in a row */
+  }
+
+  .con1 {
+    width: 90px;
+    height: 90px;
+  }
+
+  .con1 img {
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.footer {
+/* Responsive design for screens smaller than 576px (Very Small Mobile Devices) */
+@media (max-width: 576px) {
+  .container1 {
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column; /* Switch to vertical stack on very small devices */
+    align-items: center; /* Center items in the column */
+  }
+
+  .con1 {
+    width: 80px;
+    height: 80px;
+  }
+
+  .con1 img {
+    width: 40px;
+    height: 40px;
+  }
+}
+  .container2 {
+    text-align: center;
+    width: 100%;
+  }
+
+  .con2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .container2 h1 {
+    text-align: center;
+    margin: 0;
+  }
+
+  .conimg {
+    flex: 1 1 30%;
+    max-width: 30%;
+  }
+
+  .d-block {
+    width: 100%;
+  }
+
+  .footer {
     background-color: #f8f8f8;
     color: #333;
     padding: 20px 10%;
     text-align: left;
-}
+    margin-top: 500px;
+  }
 
-.footer-container {
+  .footer-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-}
+  }
 
-.footer-logo {
-    flex: 1;
-    text-align: left;
-    margin-bottom: 20px;
-}
+  .footer-logo img {
+    max-width: 80px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 30px;
+  }
 
-.logo {
+  .logo {
     max-width: 150px;
-}
+  }
 
-.footer-menu {
+  .footer-menu {
     display: flex;
     flex: 3;
     justify-content: space-around;
     flex-wrap: wrap;
-}
+  }
 
-.menu-section {
+  .menu-section {
     margin-bottom: 20px;
-}
+  }
 
-.menu-section h4 {
+  .menu-section h4 {
     font-size: 16px;
     margin-bottom: 10px;
     color: #d21b1b;
-}
+  }
 
-.menu-section ul {
+  .menu-section ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
+  }
 
-.menu-section ul li {
+  .menu-section ul li {
     margin: 5px 0;
-}
+  }
 
-.menu-section ul li a {
+  .menu-section ul li a {
     text-decoration: none;
     color: #333;
     transition: color 0.3s;
-}
+  }
 
-.menu-section ul li a:hover {
+  .menu-section ul li a:hover {
     color: #d21b1b;
-}
+  }
 
-.footer-bottom {
+  .footer-bottom {
     text-align: center;
     border-top: 1px solid #ddd;
     padding-top: 30px;
     margin-top: 20px;
-}
+  }
 
-.footer-bottom p {
+  .footer-bottom p {
     margin: 10px 0;
     font-size: 14px;
-}
+  }
 
-.footer-bottom a {
+  .footer-bottom a {
     text-decoration: none;
     color: #d21b1b;
     font-weight: bold;
-}
+  }
 
-.footer-bottom a:hover {
+  .footer-bottom a:hover {
     text-decoration: underline;
-}
+  }
 
-.social-links a {
+  .social-links a {
     margin: 0 10px;
     display: inline-block;
-}
+  }
 
-.social-links img {
+  .social-links img {
     width: 20px;
     height: 20px;
-}
+  }
 
+  /* Responsive design for various screen sizes */
+  @media (max-width: 1024px) {
+    .container1 {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+    }
 
+    .footer {
+      padding: 15px 5%;
+    }
+
+    .footer-logo img {
+      max-width: 60px;
+    }
+
+    .footer-menu {
+      flex-direction: column;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .footer-bottom {
+      padding-top: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container1 {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .con1 img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .dropdown-content a {
+      padding: 10px 12px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .container {
+      height: auto;
+      padding: 10px;
+    }
+
+    .dropbtn {
+      font-size: 14px;
+      padding: 12px;
+    }
+
+    .dropdown-content a {
+      padding: 8px 10px;
+    }
+
+    .carousel-item img {
+      height: 300px;
+      /* Adjust carousel image for mobile */
+    }
+
+    .footer-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .footer-bottom {
+      padding-top: 40px;
+    }
+
+    .card-img-top {
+      height: 140px;
+      /* Smaller image on mobile */
+    }
+
+    .card-body {
+      padding: 8px;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+    }
+
+    .card-text {
+      font-size: 0.8rem;
+    }
+  }
 </style>
+
+
 <body>
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
-       
+      <a class="navbar-brand" href="#">focusframes</a>
+
+      <!-- Navbar Toggle Button for smaller screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="bookings">Bookings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="view_cart">Cart</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logout">Logout</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    category
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <!-- <li><a class="dropdown-item" href="categories">Categories</a></li> -->
-                    <li><a class="dropdown-item" href="women_frames">WOMEN Frames</a></li>
-                    <li><a class="dropdown-item" href="Men Frames">MEN Frames</a></li>
-                    <li><a class="dropdown-item" href="Kids Frames">KIDS Frames</a></li>
-                </ul>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bookings">Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contact">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Category
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'category_view' category_id=1 %}">WOMEN Frames</a></li>
+              <li><a class="dropdown-item" href="{% url 'category_view' category_id=2 %}">MEN Frames</a></li>
+              <li><a class="dropdown-item" href="{% url 'category_view' category_id=3 %}">KIDS Frames</a></li>
+            </ul>
+          </li>
         </ul>
-
-       
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="./about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./contact">Contact</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="view_cart">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
         </ul>
-    </div>
-</nav>
-
-
-  
-    
-
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-  
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-  </div>
-  
- 
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{% static '/images/ai-generated-woman-wearing-glasses-looking-at-cell-phone-free-photo.jpeg' %}" alt="New York" class="d-block" style="width:100%;height: 800px;">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static '/images/bb.webp' %}" alt="New York" class="d-block" style="width:100%;height: 800px;">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static '/images/h-eyeglass-frame-size-chart-1024x585.webp' %}" alt="New York" class="d-block" style="width:100%;height: 800px;">
-    </div>
-  </div>
-  
- 
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
-
-<div class="container">
-  <h3>WELCOME TO FOCUSFRAMES</h3>
-  <h5>PERSONAL SERVICE AND PROFESSIONAL CARES .</h5>
-  <p>At Lens & Frames, customer satisfaction is not just a mere statement but an overriding passion. And we are living out this passion in myriad ways through constant innovation in dispensing and adaptation to the new technologies. The management and staff at Lens And Frames is committed to provide the best vision care products and excellent optometric services believing strongly in the ‘value for money’ concept.</p>
-</div> 
-
-<div class="container1">
-  <div class="con1">
-    <img src="{% static 'images/icon-1-hover.png' %}" alt="New York" class="d-block">
-  </div>
-  <div class="con1">
-    <img src="{% static 'images/icon-2-hover.png' %}" alt="New York" class="d-block">
-  </div>
-  <div class="con1">
-    <img src="{% static 'images/icon-3-hover.png' %}" alt="New York" class="d-block">
-  </div>
-  <div class="con1">
-    <img src="{% static 'images/icon-5-hover.png' %}" alt="New York" class="d-block">
-  </div>
-</div>
-
-<div class="container2">
-  <h1>OUR BRANDS</h1>
-  <div class="con2">
-    
-    <div class="conimg">
-      <img src="{% static 'images/oakley-img.jpg' %}" alt="New York" class="d-block">
-    </div>
-    <div class="conimg">
-      <img src="{% static 'images/crizal-img.jpg' %}" alt="New York" class="d-block">
-    </div>
-    <div class="conimg">
-      <img src="{% static 'images/varilux-img.jpg' %}" alt="New York" class="d-block">
-    </div>
-    <div class="conimg">
-      <img src="{% static 'images/ray-ban-img.jpg' %}" alt="New York" class="d-block">
-    </div>
-    <div class="conimg">
-      <img src="{% static 'images/maui-jim-img.jpg' %}" alt="New York" class="d-block">
-    </div>
-   
-    <div class="conimg">
-      <img src="{% static 'images/Transition-light-img.jpg' %}" alt="New York" class="d-block">
-    </div>
-    
-  </div>
-</div>
-<div class="container text-center mt-5">
-  <h1>Best Sellers</h1>
-  <h2 style="color: red;">New Arrivals</h2>
-  <p>From trendy frames to premium sun protection, find the perfect pair to complement your style and enhance your vision.</p>
-</div>
-
-<div class="container" style="max-width: 1200px;">
-  <div class="row">
-    {% for pro in products %}
-    <div class="col-lg-4 mb-4">
-      <a href="view_pro/{{pro.pk}}">
-      <div class="card" style="width: 100%;">
-        <img class="card-img-top" src="{{ pro.img.url }}" alt="Card image" style="width: 100%; height: auto; object-fit: cover;">
-        <div class="card-body">
-          <h4 class="card-title">{{ pro.name }}</h4>
-          <p class="card-text">{{ pro.dis }}</p>
-          <p class="card-text text-muted" style="text-decoration: line-through;">Price: ${{ pro.price }}</p>
-          <p class="card-text text-danger">Offer Price: ${{ pro.offer_price }}</p>
-        </div>
       </div>
-    </a>
     </div>
-    {% endfor %}
+  </nav>
+
+
+
+
+
+  <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static '/images/ai-generated-woman-wearing-glasses-looking-at-cell-phone-free-photo.jpeg' %}"
+          alt="New York" class="d-block" style="width:100%;height: 800px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/images/bb.webp' %}" alt="New York" class="d-block" style="width:100%;height: 800px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/images/h-eyeglass-frame-size-chart-1024x585.webp' %}" alt="New York" class="d-block"
+          style="width:100%;height: 800px;">
+      </div>
+    </div>
+
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
   </div>
-</div>
 
-  
+  <div class="container">
+    <h3>WELCOME TO FOCUSFRAMES</h3>
+    <h5>PERSONAL SERVICE AND PROFESSIONAL CARES .</h5>
+    <p>At Lens & Frames, customer satisfaction is not just a mere statement but an overriding passion. And we are living
+      out this passion in myriad ways through constant innovation in dispensing and adaptation to the new technologies.
+      The management and staff at Lens And Frames is committed to provide the best vision care products and excellent
+      optometric services believing strongly in the ‘value for money’ concept.</p>
+  </div>
 
-</div>
-<footer class="footer">
-  <div class="footer-container">
+  <div class="container1">
+    <div class="con1">
+      <img src="{% static 'images/icon-1-hover.png' %}" alt="New York" class="d-block">
+    </div>
+    <div class="con1">
+      <img src="{% static 'images/icon-2-hover.png' %}" alt="New York" class="d-block">
+    </div>
+    <div class="con1">
+      <img src="{% static 'images/icon-3-hover.png' %}" alt="New York" class="d-block">
+    </div>
+    <div class="con1">
+      <img src="{% static 'images/icon-5-hover.png' %}" alt="New York" class="d-block">
+    </div>
+  </div>
+
+  <div class="container2">
+    <h1>OUR BRANDS</h1>
+    <div class="con2">
+
+      <div class="conimg">
+        <img src="{% static 'images/oakley-img.jpg' %}" alt="New York" class="d-block">
+      </div>
+      <div class="conimg">
+        <img src="{% static 'images/crizal-img.jpg' %}" alt="New York" class="d-block">
+      </div>
+      <div class="conimg">
+        <img src="{% static 'images/varilux-img.jpg' %}" alt="New York" class="d-block">
+      </div>
+      <div class="conimg">
+        <img src="{% static 'images/ray-ban-img.jpg' %}" alt="New York" class="d-block">
+      </div>
+      <div class="conimg">
+        <img src="{% static 'images/maui-jim-img.jpg' %}" alt="New York" class="d-block">
+      </div>
+
+      <div class="conimg">
+        <img src="{% static 'images/Transition-light-img.jpg' %}" alt="New York" class="d-block">
+      </div>
+
+    </div>
+  </div>
+  <div class="container text-center mt-5">
+    <!-- <h1>Best Sellers</h1>
+    <h2 style="color: red;">New Arrivals</h2>
+    <p>From trendy frames to premium sun protection, find the perfect pair to complement your style and enhance your
+      vision.</p> -->
+  </div>
+
+  <div class="container" style="max-width: 1200px;">
+    <div class="row">
+      {% for pro in products %}
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        <a href="view_pro/{{pro.pk}}" style="text-decoration: none; color: inherit;">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="{{ pro.img.url }}" alt="Card image"
+              style="width: 100%; height: 250px; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <h4 class="card-title text-truncate" title="{{ pro.name }}">{{ pro.name }}</h4>
+              <p class="card-text text-truncate">{{ pro.dis }}</p>
+              <p class="card-text text-muted" style="text-decoration: line-through;">Price: ${{ pro.price }}</p>
+              <p class="card-text text-danger fw-bold">Offer Price: ${{ pro.offer_price }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-container">
       <div class="footer-logo">
-          <img src="logo.png" alt="" class="logo">
+        <img src="{% static 'images/Untitledlog.png' %}" alt="" class="logo">
       </div>
       <div class="footer-menu">
-          <div class="menu-section">
-              <h4>ABOUT US</h4>
-              <ul>
-                  <li><a href="about">About Us</a></li>
-              </ul>
-          </div>
-          <div class="menu-section">
-              <h4>EYECARE</h4>
-              <ul>
-                  <li><a href="#">Eye Examination</a></li>
-                  <li><a href="#">Contact Lenses</a></li>
-              </ul>
-          </div>
-          <div class="menu-section">
-              <h4>EYEWEAR</h4>
-              <ul>
-                  <li><a href="#">Frames</a></li>
-                  <li><a href="#">Sunglasses</a></li>
-                  <li><a href="#">Our Brands</a></li>
-              </ul>
-          </div>
-          <div class="menu-section">
-              <h4>CUSTOMER SERVICE</h4>
-              <ul>
-                  <li><a href="contact">Contact Us</a></li>
-                  <li><a href="#">Offers</a></li>
-              </ul>
-          </div>
+        <div class="menu-section">
+          <h4>ABOUT US</h4>
+          <ul>
+            <li><a href="about">About Us</a></li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <h4>EYECARE</h4>
+          <ul>
+            <li><a href="#">Eye Examination</a></li>
+            <li><a href="#">Contact Lenses</a></li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <h4>EYEWEAR</h4>
+          <ul>
+            <li><a href="#">Frames</a></li>
+            <li><a href="#">Sunglasses</a></li>
+            <li><a href="#">Our Brands</a></li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <h4>CUSTOMER SERVICE</h4>
+          <ul>
+            <li><a href="contact">Contact Us</a></li>
+            <li><a href="#">Offers</a></li>
+          </ul>
+        </div>
       </div>
-  </div>
-  <div class="footer-bottom">
+    </div>
+    <div class="footer-bottom">
       <div class="social-links">
-          <a href="#"><img src="{% static '/images/3d-square-with-facebook-logo_901970-2.avif' %}" alt="Facebook"></a>
-          <a href="#"><img src="{% static '/images/download.jpeg' %}" alt="Instagram"></a>
+        <a href="#"><img src="{% static '/images/3d-square-with-facebook-logo_901970-2.avif' %}" alt="Facebook"></a>
+        <a href="#"><img src="{% static '/images/download.jpeg' %}" alt="Instagram"></a>
       </div>
-      <p>© 2021 Lens & Frames Opticians. All rights reserved. Website Designed and Developed by <a href="#">OptiCommerce</a>.</p>
+      <p>© 2021 Lens & Frames Opticians. All rights reserved. Website Designed and Developed by <a
+          href="#">OptiCommerce</a>.</p>
       <p>
-          <a href="#">Privacy Policy</a> | 
-          <a href="#">Cookie Policy</a> | 
-          <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Cookie Policy</a> |
+        <a href="#">Terms & Conditions</a>
       </p>
-  </div>
-</footer>
-
+    </div>
+  </footer>
 </body>
+
 </html>

@@ -17,44 +17,45 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-           
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bookings">Bookings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="view_cart">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="logout">Logout</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        category
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!-- <li><a class="dropdown-item" href="categories">Categories</a></li> -->
-                        <li><a class="dropdown-item" href="women_frames">WOMEN Frames</a></li>
-                        <li><a class="dropdown-item" href="Men Frames">MEN Frames</a></li>
-                        <li><a class="dropdown-item" href="Kids Frames">KIDS Frames</a></li>
-                    </ul>
-                </li>
-            </ul>
     
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../bookings">Bookings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../contact">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                category
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <!-- <li><a class="dropdown-item" href="categories">Categories</a></li> -->
+                <li><a class="dropdown-item" href="{% url 'category_view' category_id=1 %}">WOMEN Frames</a></li>
+                <li><a class="dropdown-item" href="{% url 'category_view' category_id=2 %}">MEN Frames</a></li>
+                <li><a class="dropdown-item" href="{% url 'category_view' category_id=3 %}">KIDS Frames</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
            
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./contact">Contact</a>
-                </li>
-            </ul>
+    
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="../view_cart">Cart</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="../logout">Logout</a>
+            </li>
+          </ul>
         </div>
-    </nav>
+      </nav>
     <div class="container">
         <div class="row">
             {% for i in cart %}

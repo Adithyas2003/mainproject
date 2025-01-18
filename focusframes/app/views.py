@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .models import *
@@ -269,3 +269,16 @@ def bookings(req):
 def view_bookings(req):
     buy=Buy.objects.all()[::-1]
     return render(req,'shop/viewbookings.html',{'buy':buy})
+
+
+
+def category_view(request,category_id):
+    try:
+        category = get_object_or_404(Category,id=category_id)
+        
+        products = product.objects.filter(category=category)
+        
+        return render(request, 'user/category_detail.html', {'category': category, 'products': products})
+    
+    except Category.DoesNotExist:
+        return render(request, 'user/category_detail.html', {'error': 'Category not found'})

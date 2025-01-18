@@ -4,7 +4,7 @@ from .import views
 urlpatterns = [
     path('',views.e_shop_login),
     path('shop_home',views.shop_home),
-    path('logout',views.e_shop_logout),
+    path('logout/',views.e_shop_logout),
     path('add_product/',views.add_product),
     path('edit_product/<pid>',views.edit_product),
     path('delete_product/<pid>',views.delete_product),
@@ -34,6 +34,7 @@ urlpatterns = [
     # path('women_frames/', views.women_frames),
     # path('men_frames/', views.men_frames),
     # path('kids_frames/', views.kids_frames),
+    path('category_view/<int:category_id>/', views.category_view, name='category_view'),
 
 
 ]

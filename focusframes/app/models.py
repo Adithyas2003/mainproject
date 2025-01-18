@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     Category_name=models.TextField()
+    Category_description=models.TextField()
 
 class product(models.Model):
     pid=models.TextField()
